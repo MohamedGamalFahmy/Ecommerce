@@ -1,5 +1,5 @@
-import bannerImgOne from "./banner/bannerImgTwo.jpg";
-import bannerImgTwo from "./banner/bannerImgOne.jpg";
+import bannerImgOne from "./banner/bannerImgOne.jpg";
+import bannerImgTwo from "./banner/bannerImgTwo.jpg";
 import bannerImgThree from "./banner/bannerImgThree.jpg";
 import bannerImgFour from "./banner/bannerImgFour.jpg";
 import bannerImgFive from "./banner/bannerImgFive.jpg";
