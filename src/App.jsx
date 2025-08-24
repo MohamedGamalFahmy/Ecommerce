@@ -1,13 +1,50 @@
-import React from 'react'
-import './index.css'
+import './index.css' 
+import {
+  createBrowserRouter,
+  Outlet,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
 
+} from "react-router-dom";
+import Navbar from "./Componets/Navbar/Navbar.jsx";
+import Footer from "./Componets/Footer/Footer.jsx";
+import Cart from "./cart/Cart.jsx";
+import Sign from "./Componets/Sign";
+import Home from "./Pages/Home";
+import { ProdcutsData } from "./api/Api.jsx";
+
+
+const Layout =()=>{
+  return (
+    <>
+    <Navbar />
+    <Outlet />
+    <Footer />
+    </>
+  )
+};
 
 const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<Home/>}loader={ProdcutsData} ></Route>
+          <Route path="/cart" element={<Cart/>}></Route>
+        </Route>
+        <Route path="/sign" element={<Sign/>}></Route>
+      </Route>
+
+    )
+
+  );
   return (
-<div className="flex items-center justify-center h-screen bg-gray-900">
-  <h1 className="text-9xl text-white">hello</h1>
-</div>
+  <div>
+    <RouterProvider router={router} />
+    </div>
+    
   )
-}
+};
 
 export default App
