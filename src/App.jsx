@@ -1,4 +1,6 @@
 import './index.css' 
+import { Suspense } from "react";
+
 import {
   createBrowserRouter,
   Outlet,
@@ -40,11 +42,13 @@ const App = () => {
 
   );
   return (
-  <div>
-    <RouterProvider router={router} />
-    </div>
     
-  )
+      <RouterProvider 
+        router={router} 
+        fallbackElement={<div>Loading...</div>} 
+      />
+    
+  );
 };
 
 export default App

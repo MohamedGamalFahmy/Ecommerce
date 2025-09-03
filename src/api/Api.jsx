@@ -3,5 +3,7 @@ import React from 'react'
 
 export const  ProdcutsData  = async () => {
     const prodcut = await axios.get("https://fakestoreapi.com/products")
+
+    
   return prodcut
 }

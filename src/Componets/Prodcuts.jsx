@@ -9,6 +9,7 @@ import { GrFormView } from "react-icons/gr";
 import { TbJewishStar } from "react-icons/tb";
 import { TbJewishStarFilled } from "react-icons/tb";
 import { MdAssistantDirection } from "react-icons/md";
+import { incrementQuantity } from '../cart/CartSlice';
 
 
 const Prodcuts = () => {
@@ -27,13 +28,16 @@ const Prodcuts = () => {
   return (
     <div className=' relative grid sml:grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 text-wrap top-[-100px] z-30' >
       {prodcut.map((item) => (
-        <>
-          <div key={item.id} className='border m-5 bg-white text-wrap  sm:max-w-[100%]  ' >
+
+
+        
+
+          <div key={item.id} className='border m-5 bg-white text-wrap  sm:max-w-[100%]   sml:hover:shadow-2xl ' >
             <p className=' text-right '>{item.category}</p>
             <div className="relative group 0 rounded-xl overflow-hidden ">
               <img src={item.image} alt="" className='w-[200px] h-[300px]  m-5 sml:mx-auto sm:mx-auto ' />
               <div
-                className="absolute inset-0 bg-black/40 flex items-end mt-3 flex-col
+                className="absolute inset-0 flex items-end mt-3 flex-col
                    opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               >
                 <div
@@ -81,14 +85,26 @@ const Prodcuts = () => {
 
 
             <button
-              onClick={() => dispatch(addToCart(item))}
-              class="group relative  inline-block overflow-hidden border border-indigo-600 mx-4 my-3 px-5 py-3 focus:ring-3 focus:outline-hidden hover:rounded-e-full "  >
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: item.id,
+                    title: item.title,
+                    description: item.description,
+                    price: item.price,
+                    category: item.category,
+                    img: item.image,
+                    quanitity: 1,
+                  })
+                )
+              }
+              className="group relative left-[20%] overflow-hidden border border-indigo-600 mx-4 my-3 px-5 py-3 focus:outline-hidden focus:rounded-e-full  "  >
               <span
-                class="absolute  left-0 inset-y-0  w-[2px] bg-indigo-600 transition-all group-hover:w-full "
+                className="absolute  left-0 inset-y-0  w-[2px] bg-indigo-600 transition-all group-hover:w-full "
               ></span>
 
               <span
-                class="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white "
+                className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white "
               >
                 Add to Cart
               </span>
@@ -96,7 +112,7 @@ const Prodcuts = () => {
 
 
           </div>
-        </>
+        
 
 
       ))}
